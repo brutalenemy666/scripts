@@ -39,7 +39,7 @@ class Crb_UniqueId {
 
 	private function __construct($args, $duplicate_window=false) {
 		$this->args = (array) $args;
-		$this->session_key = CRB_EM_PREFIX . 'unique-numbers';
+		$this->session_key = 'crb-unique-numbers';
 
 		$this->duplicate_window = intval($duplicate_window);
 		if ( !$this->duplicate_window ) {
