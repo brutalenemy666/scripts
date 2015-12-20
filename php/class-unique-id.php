@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 
 /**
- * Generates an unique number and cache it for a amount of time or until the browser is closed
+ * Generates an unique number and cache it for an amount of time or until the browser is closed
  * The number cache is based on a given values
  * Can be used for an invoice number in order to prevent accidentally resubmission or charge
  *
