@@ -79,7 +79,7 @@
 		}
 
 		function canLoadContent() {
-			return $(window).scrollTop() >= $(document).height() - $(window).height() - options.offset
+			return $(window).scrollTop() >= $(document).height() - $(window).height() - options.offset;
 		}
 
 		function hasPreloader() {
