@@ -5,7 +5,7 @@
 		$scrollToSection();
 	});
 
-	$scrollToSection = function() {
+	var $scrollToSection = function() {
 		// <a href="#section-id-attr">anchor text</a>
 		// <div id="section-id-attr"> content </div> 
 		var $links = $('a.scroll-to'),
