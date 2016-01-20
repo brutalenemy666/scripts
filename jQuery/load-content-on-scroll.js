@@ -99,7 +99,7 @@
 				return;
 			};
 
-			$preloader.fadeout();
+			$preloader.fadeOut();
 		}
 	}
 })(jQuery, window, document);
