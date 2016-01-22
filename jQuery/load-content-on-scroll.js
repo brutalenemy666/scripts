@@ -7,7 +7,7 @@
 
 	var $loadMoreContent = function( options ) {
 		var can_proceed = true,
-			pref_link = null;
+			previous_link = null;
 
 		var options = jQuery.extend({
 			offset: 450, // offset in pixels
@@ -56,12 +56,12 @@
 
 			link = $more_link.attr('href');
 
-			if ( !link || link===pref_link ) {
+			if ( !link || link===previous_link ) {
 				hidePreloader();
 				return;
 			};
 
-			pref_link = link;
+			previous_link = link;
 
 			$.get(link, function(data) {
 				var $content_to_add = $(options.content_container_selector + " > *", data),
