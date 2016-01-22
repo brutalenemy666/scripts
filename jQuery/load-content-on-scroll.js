@@ -6,7 +6,8 @@
 	});
 
 	var $loadMoreContent = function( options ) {
-		var can_proceed = true;
+		var can_proceed = true,
+			pref_link = null;
 
 		var options = jQuery.extend({
 			offset: 450, // offset in pixels
@@ -55,9 +56,12 @@
 
 			link = $more_link.attr('href');
 
-			if ( !link ) {
+			if ( !link || link===pref_link ) {
+				hidePreloader();
 				return;
 			};
+
+			pref_link = link;
 
 			$.get(link, function(data) {
 				var $content_to_add = $(options.content_container_selector + " > *", data),
