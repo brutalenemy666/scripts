@@ -32,7 +32,7 @@ sudo apt-cache search php7-*
 echo "#------------------------------"
 echo "Installing php7/apache requirements"
 echo "#------------------------------"
-sudo apt-get install libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json
+sudo apt-get install libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php7.0-intl php7.0-gd php7.0-cgi php7.0-cli php7.0-fpm
 
 echo "#------------------------------"
 echo "Installing composer"
@@ -43,3 +43,14 @@ echo "#------------------------------"
 echo "Install Laravel"
 echo "#------------------------------"
 composer global require "laravel/installer"
+
+echo "#------------------------------"
+echo "Making the composer vendors available through bash"
+echo "#------------------------------"
+BASH_PROFILE_CONTENT="\n\n# --------------"
+BASH_PROFILE_CONTENT+="\n# Making the composer vendors available through bash"
+BASH_PROFILE_CONTENT+="\nexport PATH=~/.composer/vendor/bin:\$PATH"
+BASH_PROFILE_CONTENT+="\n# --------------\n\n"
+echo -e $BASH_PROFILE_CONTENT >> ~/.bashrc
+echo -e $BASH_PROFILE_CONTENT >> ~/.bash_profile
+
