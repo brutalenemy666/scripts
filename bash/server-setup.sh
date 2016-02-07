@@ -1,16 +1,33 @@
 #!/bin/bash
 
 echo "#------------------------------"
-echo "Adding ppa repositories for Apache2 and PHP7"
+echo "Adding ppa repositories for Apache2, NGINX and PHP7"
 echo "#------------------------------"
+sudo add-apt-repository ppa:nginx/$nginx
 sudo add-apt-repository ppa:ondrej/apache2
 sudo add-apt-repository ppa:ondrej/php-7.0
 sudo apt-get update
 
 echo "#------------------------------"
-echo "Installing apache2"
+echo "Select a server to instal :: Apache2 or NGINX?"
+read server
+while [ $server != "Apache2" ] && [ $server != "NGINX" ]; do
+	echo "Please enter Apache2 or NGINX."
+	read server
+done
 echo "#------------------------------"
-sudo apt-get insall apache2
+
+if [ $server = "Apache2" ]; then
+	echo "#------------------------------"
+	echo "Installing apache2"
+	echo "#------------------------------"
+	sudo apt-get insall apache2
+elif [ $server = "NGINX" ]; then
+	echo "#------------------------------"
+	echo "Installing NGINX"
+	echo "#------------------------------"
+	sudo apt-get install nginx
+fi
 
 echo "#------------------------------"
 echo "MySQL"
@@ -35,6 +52,11 @@ echo "#------------------------------"
 sudo apt-get install libapache2-mod-php7.0 php7.0-mysql php7.0-curl php7.0-json php7.0-intl php7.0-gd php7.0-cgi php7.0-cli php7.0-fpm
 
 echo "#------------------------------"
+echo "Installing nodejs"
+echo "#------------------------------"
+sudo apt-get install nodejs
+
+echo "#------------------------------"
 echo "Installing composer"
 echo "#------------------------------"
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
@@ -42,7 +64,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 echo "#------------------------------"
 echo "Install Laravel"
 echo "#------------------------------"
-composer global require "laravel/installer"
+sudo composer global require "laravel/installer"
 
 echo "#------------------------------"
 echo "Making the composer vendors available through bash"
